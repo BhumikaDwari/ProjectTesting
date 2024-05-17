@@ -41,7 +41,25 @@ public class ProductController {
         return  productService.getSingleProduct(id);
     }
 
-    public void deleteProduct(Long id) {
+    @DeleteMapping("/products/{id}")
+    public Product deleteProduct(@PathVariable("id") Long id){
+        return productService.deleteProduct(id);
+    }
+
+    @PutMapping("/products/{id}")
+    public Product updateProduct(@PathVariable("id") Long id , @RequestBody CreateProductRequestDto productRequestDto){
+        return productService.updateProduct(id,
+                productRequestDto.getTitle(),
+                productRequestDto.getImage(),
+                productRequestDto.getDescription(),
+                productRequestDto.getCategory(),
+                productRequestDto.getPrice()
+        );
+    }
+
+    @GetMapping("/products/category/{title}")
+    public List<Product> getInCategory(@PathVariable("title") String title){
+        return productService.getProductByCategory(title);
     }
 
 

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<FakeStoreCategoryDto> getAllCategory();
+    String[] getAllCategory();
 }

@@ -12,7 +12,17 @@ public interface ProductService {
                                  String image,
                                  String description,
                                  String category,
-                                 double price);
+                                 Double price);
 
     public List<Product> getAllProduct();
+
+    Product deleteProduct(Long id);
+
+    Product updateProduct(Long id,String title,
+                          String image,
+                          String description,
+                          String category,
+                          Double price);
+
+    List<Product> getProductByCategory(String title);
 }

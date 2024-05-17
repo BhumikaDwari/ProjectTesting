@@ -20,9 +20,9 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public ResponseEntity<List<FakeStoreCategoryDto>> getAllCategory(){
-        List<FakeStoreCategoryDto> responseData = categoryService.getAllCategory();
-        ResponseEntity<List<FakeStoreCategoryDto>> responseEntity =
+    public ResponseEntity<String[]> getAllCategory(){
+        String[] responseData = categoryService.getAllCategory();
+        ResponseEntity<String[]> responseEntity =
                 new ResponseEntity<>(responseData, HttpStatusCode.valueOf(200));
         return responseEntity;
     }

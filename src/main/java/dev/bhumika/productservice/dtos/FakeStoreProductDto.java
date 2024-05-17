@@ -13,7 +13,7 @@ public class FakeStoreProductDto {
     private String image;
     private String description;
     private String category;
-    private double price;
+    private Double price;
 
     public Product toProduct(){
         Product product = new Product();
