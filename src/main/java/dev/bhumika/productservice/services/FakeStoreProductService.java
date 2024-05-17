@@ -22,12 +22,20 @@ public class FakeStoreProductService implements ProductService{
     @Override
     public Product getSingleProduct(Long id) {
 
+        ResponseEntity<FakeStoreProductDto> responseEntity = restTemplate.getForEntity
+                ("https://fakestoreapi.com/products/{id}", FakeStoreProductDto.class,id);
+        return responseEntity.getBody().toProduct();
+
+
+
+
+
+        //FakeStoreProductDto responseEntity = restTemplate.getForObject
+             //   ("https://fakestoreapi.com/products/", FakeStoreProductDto.class, id);
+        //return responseEntity.toProduct();
+
         //FakeStoreProductDto fakeStoreProductDto = restTemplate.getForObject("https://fakestoreapi.com/products/" + id, FakeStoreProductDto.class);
-
-        ResponseEntity<FakeStoreProductDto> responseEntity = restTemplate.getForEntity("https://fakestoreapi.com/products/" + id, FakeStoreProductDto.class);
 //        FakeStoreProductDto fakeStoreProductDto = responseEntity.getBody();
-
-//
 //        Product product = new Product();
 //        product.setId(fakeStoreProductDto.getId());
 //        product.setTitle(fakeStoreProductDto.getTitle());
@@ -39,7 +47,7 @@ public class FakeStoreProductService implements ProductService{
 //        product.setCategory(category);
         //return product;
 
-         return responseEntity.getBody().toProduct();
+
     }
 
     @Override
@@ -52,7 +60,8 @@ public class FakeStoreProductService implements ProductService{
         fakeStoreProductDto.setImage(image);
         fakeStoreProductDto.setTitle(title);
 
-        FakeStoreProductDto response = restTemplate.postForObject("https://fakestoreapi.com/products", fakeStoreProductDto, FakeStoreProductDto.class);
+        FakeStoreProductDto response = restTemplate.postForObject
+                ("https://fakestoreapi.com/products", fakeStoreProductDto, FakeStoreProductDto.class);
 
         return response.toProduct();
     }
@@ -60,7 +69,8 @@ public class FakeStoreProductService implements ProductService{
     @Override
     public List<Product> getAllProduct(){
 
-        FakeStoreProductDto[] response = restTemplate.getForObject("https://fakestoreapi.com/products", FakeStoreProductDto[].class);
+        FakeStoreProductDto[] response = restTemplate.getForObject
+                ("https://fakestoreapi.com/products", FakeStoreProductDto[].class);
 
         List<Product> products = new ArrayList<>();
         for(FakeStoreProductDto fakeStoreProductDto: response){

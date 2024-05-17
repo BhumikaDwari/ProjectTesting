@@ -26,7 +26,6 @@ public class ProductController {
                 productRequestDto.getDescription(),
                 productRequestDto.getCategory(),
                 productRequestDto.getPrice()
-
         );
     }
 
@@ -37,14 +36,17 @@ public class ProductController {
         return responseEntity;
     }
 
-    @GetMapping("/products/{id} ")
+    @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable("id") Long id){
         return  productService.getSingleProduct(id);
     }
 
     public void deleteProduct(Long id) {
     }
+
+
     //homework
 //    Get all category
 //    update a product , delete a product , get products in specific categories
+
 }

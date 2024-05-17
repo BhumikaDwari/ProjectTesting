@@ -21,9 +21,10 @@ public class FakeStoreProductDto {
         product.setTitle(getTitle());
         product.setDescription(getDescription());
         product.setImageUrl(getImage());
+        product.setPrice(getPrice());
 
         Category category = new Category();
-        category.setTitle(getTitle());
+        category.setTitle(getCategory());
         product.setCategory(category);
 
         return product;
