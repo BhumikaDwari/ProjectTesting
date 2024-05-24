@@ -19,7 +19,6 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/categories")
     public ResponseEntity<String[]> getAllCategory(){
         String[] responseData = categoryService.getAllCategory();
         ResponseEntity<String[]> responseEntity =

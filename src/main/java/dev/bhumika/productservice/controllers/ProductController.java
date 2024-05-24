@@ -3,6 +3,7 @@ package dev.bhumika.productservice.controllers;
 import dev.bhumika.productservice.dtos.CreateProductRequestDto;
 import dev.bhumika.productservice.models.Product;
 import dev.bhumika.productservice.services.ProductService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +13,9 @@ import java.util.List;
 @RestController
 public class ProductController {
 
-    ProductService productService;
+    private ProductService productService;
 
-    public ProductController(ProductService productService){
+    public ProductController(@Qualifier("selfProductService") ProductService productService){
         this.productService = productService;
     }
 
@@ -38,6 +39,7 @@ public class ProductController {
 
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable("id") Long id){
+
         return  productService.getSingleProduct(id);
     }
 
